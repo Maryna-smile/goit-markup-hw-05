@@ -8,11 +8,13 @@
   --white: #ffffff;
   --black: #000000;
   --social-network-icon: #afb1b8;
-  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   --label: rgba(47, 48, 58, 0.8);
   --project-overlay: rgba(33, 150, 243, 0.9);
   --backdrop: rgba(0, 0, 0, 0.2);
+  --time: 250ms;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 body {
   background-color: var(--white);
@@ -108,12 +110,6 @@ body {
   color: var(--secondary-text-color);
 }
 
-.cards:hover,
-.cards:focus {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
-}
-
 /* -------------навігація---------------- */
 .nav {
   display: flex;
@@ -129,6 +125,8 @@ body {
   padding-bottom: 32px;
 
   color: var(--secondary-text-color);
+
+  transition: color var(--time) var(--timing-function);
 }
 
 .nav .link:hover,
@@ -139,7 +137,6 @@ body {
 .footer .item:focus {
   color: var(--color-of-efect);
   outline: 0;
-  outline-color: transparent;
 }
 
 .nav .current {
@@ -179,10 +176,15 @@ body {
 }
 
 .contact {
+  display: flex;
+  align-items: center;
+
   color: var(--primary-text-color);
+  transition: color var(--time) var(--timing-function);
 }
 
 .button-icon {
+  align-self: center;
   margin-right: 10px;
   fill: currentColor;
 }
@@ -417,6 +419,9 @@ p {
   border-radius: 50%;
   /* color: currentColor; */
   color: var(--social-network-icon);
+
+  transition: color var(--time) var(--timing-function),
+    background-color var(--time) var(--timing-function);
 }
 
 .team-icon {
@@ -453,6 +458,9 @@ p {
   border: 1px solid var(--social-network-icon);
   border-radius: 4px;
   color: var(--social-network-icon);
+
+  transition: color var(--time) var(--timing-function),
+    border-color var(--time) var(--timing-function);
 }
 
 .client-icon {
@@ -463,6 +471,122 @@ p {
 .clients-link:focus {
   color: var(--color-of-efect);
   border-color: var(--color-of-efect);
+}
+
+/* --------------сторінка №2 portfolio---------- */
+
+/* -----------------кнопки--------------- */
+.buttons {
+  display: flex;
+  margin-bottom: 50px;
+  justify-content: center;
+  text-align: center;
+}
+
+.buttons .item:not(:last-child) {
+  margin-right: 8px;
+}
+
+.button-porfolio {
+  padding: 6px 22px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.62;
+  text-align: center;
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-text-color);
+  border-radius: 4px;
+  border: transparent;
+
+  transition: color var(--time) var(--timing-function),
+    background-color var(--time) var(--timing-function),
+    box-shadow var(--time) var(--timing-function);
+}
+
+.button-porfolio:hover,
+.button-porfolio:focus {
+  background-color: var(--color-of-efect);
+  color: var(--white);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+
+.project-name h2 {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.work-desc {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.88;
+  color: var(--primary-text-color);
+}
+
+/* ------------Приклади робіт ---------------*/
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.project {
+  flex-basis: calc((100% - 60px) / 3);
+}
+
+.work-title {
+  font-size: 18px;
+  line-height: 2;
+}
+
+.project-name {
+  padding: 20px 24px;
+
+  border: 1px solid #eeeeee;
+  border-top: none;
+}
+
+.projects_wrap {
+  position: relative;
+}
+
+.projects_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--project-overlay);
+  transform: translateY(101%);
+
+  transition: transform var(--time) var(--timing-function);
+}
+
+.text_of_overlay {
+  padding: 63px 24px;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--white);
+}
+.cards {
+  box-shadow var(--time) var(--timing-function);
+}
+
+
+.cards:hover .projects_overlay,
+.cards:focus .projects_overlay {
+  transform: translateY(0);
+}
+
+.projects_wrap {
+  overflow: hidden;
+}
+
+.cards:hover,
+.cards:focus {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
 /* ------------------Підвал---------------------- */
@@ -480,6 +604,13 @@ p {
   font-size: 14px;
   line-height: 1.5;
   text-decoration: none;
+
+  transition: color var(--time) var(--timing-function);
+}
+
+.footer-address:hover,
+.footer-address:focus {
+  color: var(--color-of-efect);
 }
 
 .footer-contact {
@@ -490,6 +621,13 @@ p {
   line-height: 1.5;
   text-decoration: none;
   letter-spacing: 0.03em;
+
+  transition: color var(--time) var(--timing-function);
+}
+
+.footer-contact:hover,
+.footer-contact:focus {
+  color: var(--color-of-efect);
 }
 
 .address-style {
@@ -547,110 +685,15 @@ p {
   align-items: center;
   width: 100%;
   height: 100%;
-}
-
-.footer-icon:hover {
-  background-color: var(--color-of-efect);
   border-radius: 50%;
+  transition: background-color var(--time) var(--timing-function);
 }
 
-/* --------------сторінка №2 portfolio---------- */
-
-/* -----------------кнопки--------------- */
-.buttons {
-  display: flex;
-  margin-bottom: 50px;
-  justify-content: center;
-  text-align: center;
-}
-
-.buttons .item:not(:last-child) {
-  margin-right: 8px;
-}
-
-.button-porfolio {
-  padding: 6px 22px;
-
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.62;
-  text-align: center;
-  background-color: var(--secondary-bg-color);
-  color: var(--secondary-text-color);
-  border-radius: 4px;
-  border: transparent;
-}
-
-.button-porfolio:hover,
-.button-porfolio:focus {
+.footer-icon:hover,
+.footer-icon:focus {
   background-color: var(--color-of-efect);
-  color: var(--white);
-  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
-    0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
-.project-name h2 {
-  margin-top: 0;
-  margin-bottom: 4px;
-}
-
-.work-desc {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.88;
-  color: var(--primary-text-color);
-}
-
-/* ------------Приклади робіт ---------------*/
-.projects {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.project {
-  flex-basis: calc((100% - 60px) / 3);
-}
-
-.work-title {
-  font-size: 18px;
-  line-height: 2;
-}
-
-.project-name {
-  padding: 20px 24px;
-
-  border: 1px solid #eeeeee;
-  border-top: none;
-}
-.projects_wrap {
-  position: relative;
-}
-
-.projects_overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--project-overlay);
-  transform: translateY(101%);
-  transition: transform 250ms var(--timing-function);
-}
-
-.text_of_overlay {
-  padding: 63px 24px;
-  font-size: 18px;
-  line-height: 1.56;
-  color: var(--white);
-}
-
-.projects_wrap:hover .projects_overlay {
-  transform: translateY(0);
-}
-.projects_wrap {
-  overflow: hidden;
-}
 /* --------------Модалка----------------- */
 .backdrop {
   position: fixed;
@@ -665,13 +708,19 @@ p {
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
+
 }
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.9);
 
   min-width: 528px;
   min-height: 581px;
@@ -680,6 +729,8 @@ p {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+
+transition: transform var(--time) var(--timing-function);
 }
 
 .modal_close_button {
@@ -699,7 +750,14 @@ p {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
+
+  transition: color var(--time) var(--timing-function);
 }
+
+.modal_close_button:hover {
+  color: var(--color-of-efect);
+}
+
 .icon_modal {
   width: 11px;
   height: 11px;
